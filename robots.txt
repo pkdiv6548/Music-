@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /src/
+Disallow: /assets/audio/
+
+Sitemap: https://pulse-music.vercel.app/sitemap.xml
