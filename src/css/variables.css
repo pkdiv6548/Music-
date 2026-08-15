@@ -1,0 +1,91 @@
+:root {
+  color-scheme: dark;
+  --bg: #0a0b10;
+  --bg-gradient: radial-gradient(ellipse at 20% 10%, rgba(124, 92, 255, 0.18) 0%, transparent 50%),
+                 radial-gradient(ellipse at 80% 90%, rgba(31, 209, 167, 0.12) 0%, transparent 50%),
+                 radial-gradient(ellipse at 50% 50%, rgba(124, 92, 255, 0.05) 0%, transparent 70%);
+  --surface: rgba(18, 20, 28, 0.85);
+  --surface-soft: rgba(22, 25, 35, 0.9);
+  --surface-strong: rgba(28, 32, 45, 0.95);
+  --surface-glass: rgba(255, 255, 255, 0.03);
+  --text: #f0f2f8;
+  --text-secondary: #c5c9d6;
+  --muted: #8b92a8;
+  --primary: #8b5cf6;
+  --primary-glow: rgba(139, 92, 246, 0.4);
+  --primary-soft: rgba(139, 92, 246, 0.15);
+  --accent: #10b981;
+  --accent-glow: rgba(16, 185, 129, 0.4);
+  --accent-soft: rgba(16, 185, 129, 0.15);
+  --danger: #ef4444;
+  --warning: #f59e0b;
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.12);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.2);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.4);
+  --shadow-glow: 0 0 40px rgba(139, 92, 246, 0.3);
+  --radius-sm: 12px;
+  --radius: 20px;
+  --radius-lg: 28px;
+  --radius-xl: 36px;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.light {
+  color-scheme: light;
+  --bg: #f8fafc;
+  --bg-gradient: radial-gradient(ellipse at 20% 10%, rgba(139, 92, 246, 0.08) 0%, transparent 50%),
+                 radial-gradient(ellipse at 80% 90%, rgba(16, 185, 129, 0.06) 0%, transparent 50%),
+                 linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+  --surface: rgba(255, 255, 255, 0.9);
+  --surface-soft: rgba(255, 255, 255, 0.95);
+  --surface-strong: rgba(248, 250, 252, 0.98);
+  --surface-glass: rgba(0, 0, 0, 0.02);
+  --text: #0f172a;
+  --text-secondary: #334155;
+  --muted: #64748b;
+  --primary: #7c3aed;
+  --primary-glow: rgba(124, 58, 237, 0.3);
+  --primary-soft: rgba(124, 58, 237, 0.1);
+  --accent: #059669;
+  --accent-glow: rgba(5, 150, 105, 0.3);
+  --accent-soft: rgba(5, 150, 105, 0.1);
+  --border: rgba(0, 0, 0, 0.08);
+  --border-strong: rgba(0, 0, 0, 0.12);
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
+  --shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  --shadow-lg: 0 16px 64px rgba(0, 0, 0, 0.16);
+  --shadow-glow: 0 0 40px rgba(124, 58, 237, 0.2);
+}
+
+/* Typography Scale */
+:root {
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+  --text-5xl: 3rem;
+}
+
+/* Spacing Scale */
+:root {
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+  --space-20: 5rem;
+}
