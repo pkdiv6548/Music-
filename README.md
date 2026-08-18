@@ -1,136 +1,38 @@
-# Pulse Music
+# Music- (Frontend only)
 
-A modern, Spotify-inspired frontend-only music website built with HTML5, CSS3, and vanilla JavaScript. Features offline support, favorites, playlists, and a fully responsive design.
+This repository contains a lightweight frontend-only music player. Drag or upload local audio files to play them — no backend required.
 
-## Features
+Features implemented in this fork:
 
-- **Multiple Pages**: Home, Search, Library, About, Favorites, Recently Played, Continue Listening, Playlists, History
-- **Responsive Design**: Works on desktop, laptop, tablet, and mobile devices
-- **Music Player**: Full-featured player with play/pause, next/previous, shuffle, repeat, volume control, and playback speed
-- **Theme Support**: Dark/light theme toggle with persistent preference
-- **Favorites**: Save favorite songs using Local Storage
-- **Recently Played**: Track your listening history
-- **Continue Listening**: Resume songs from where you left off
-- **Playlists**: Create and manage custom playlists
-- **Listening History**: Detailed history with timestamps
-- **Offline Support**: Service Worker for PWA functionality
-- **Installable**: Can be installed as a PWA on supported browsers
-- **Accessibility**: ARIA labels, skip links, keyboard shortcuts, focus styles, reduced motion support
-- **SEO**: Meta tags, Open Graph, Twitter Cards
-- **Performance**: Lazy loading, ES modules, optimized assets
+- Upload local audio files and play them (uses `URL.createObjectURL`).
+- Play / pause / previous / next / seek / volume controls.
+- Shuffle and repeat modes.
+- Responsive layout and improved dark theme styling.
 
-## Quick Start
+Quick start (open locally):
 
-### Local Development
-
-Serve the project over HTTP (required for ES modules and Service Worker):
+1. Open `index.html` in your browser (File → Open File).
+2. Or serve over HTTP (recommended):
 
 ```bash
 # Python 3
-python -m http.server 8080
+python -m http.server 5500
 
-# Node.js (if http-server is installed)
-npx http-server -p 8080
-
-# PHP
-php -S localhost:8080
+# Then open http://localhost:5500
 ```
 
-Then open `http://localhost:8080` in your browser.
+To deploy on GitHub Pages: push to this repository and enable Pages in Settings (branch `main`, folder `/`).
 
-### VS Code Live Server
+Files changed/added here:
 
-Install the Live Server extension and click "Go Live".
+- `index.html` — UI and markup
+- `css/styles.css` — visuals, layout, responsive rules
+- `js/player.js` — frontend player logic (audio element, playlist, events)
+- `js/app.js` — UI wiring and local file upload handling
+- `js/playlist.js` — small stub (placeholder)
 
-## Production Deployment
+If you want, I can further merge features from the original `Pulse Music` project into this fork (PWA, service worker, extended UI). For now, this is focused on a simple, local-first music player.
 
-### Vercel
+---
+Original README content from upstream was preserved in history; this file is a concise guide to this fork's behavior.
 
-1. Push your code to GitHub
-2. Import the repository in Vercel
-3. Vercel will auto-detect the static site and deploy
-4. Your site will be live at `https://your-project.vercel.app`
-
-### GitHub Pages
-
-1. Go to repository Settings → Pages
-2. Select source branch (e.g., `main`)
-3. Select root folder
-4. Save and wait for deployment
-5. Your site will be live at `https://username.github.io/repo-name`
-
-### Netlify
-
-1. Drag and drop the `Projects/Pulse-Music` folder to Netlify
-2. Or connect your GitHub repository
-3. Deploy with default settings
-
-## Project Structure
-
-```
-Projects/Pulse-Music/
-├── index.html              # Main HTML file
-├── manifest.json           # PWA manifest
-├── sw.js                   # Service Worker for offline support
-├── robots.txt              # Search engine directives
-├── sitemap.xml             # SEO sitemap
-├── LICENSE                 # MIT License
-├── README.md               # This file
-├── assets/
-│   ├── audio/              # Audio files (empty, using generated audio)
-│   ├── icons/              # PWA icons
-│   └── images/             # Album covers and images
-└── src/
-    ├── css/
-    │   ├── reset.css       # CSS reset
-    │   ├── variables.css   # CSS custom properties
-    │   ├── layout.css      # Layout styles
-    │   ├── components.css  # Component styles
-    │   ├── pages.css       # Page-specific styles
-    │   ├── player.css      # Player styles
-    │   ├── advanced.css    # Advanced features
-    │   └── responsive.css  # Responsive breakpoints
-    ├── data/
-    │   └── songs.json       # Song metadata
-    └── js/
-        ├── main.js         # Main application logic
-        ├── data.js         # Data loading and audio generation
-        ├── storage.js      # Local Storage utilities
-        ├── components/     # Reusable UI components
-        └── pages/          # Page renderers
-```
-
-## Keyboard Shortcuts
-
-- `Space` - Play/Pause
-- `←` - Previous track
-- `→` - Next track
-- `↑` - Volume up
-- `↓` - Volume down
-- `M` - Mute/Unmute
-- `S` - Toggle shuffle
-- `R` - Cycle repeat mode
-
-## Browser Support
-
-- Chrome/Edge 90+
-- Firefox 88+
-- Safari 14+
-- Opera 76+
-
-## Technologies
-
-- HTML5
-- CSS3 (Grid, Flexbox, Custom Properties)
-- Vanilla JavaScript (ES6+)
-- Service Worker API
-- Local Storage API
-- Web Audio API (for generated audio)
-
-## License
-
-MIT License - see [LICENSE](LICENSE) file for details.
-
-## Credits
-
-Built with modern web standards. No frameworks, no dependencies, just pure web technologies.
