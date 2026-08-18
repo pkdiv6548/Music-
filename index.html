@@ -1,195 +1,241 @@
 <!DOCTYPE html>
-<html lang="hi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎵 Music Player - अपना संगीत, अपनी धुन</title>
-    <link rel="stylesheet" href="css/styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-</head>
-<body>
-    <div class="background-animation"></div>
-    <div class="app-container">
-        <!-- Sidebar -->
-        <aside class="sidebar" id="sidebar">
-            <div class="logo">
-                <i class="fas fa-music"></i>
-                <h1>Music<span>Player</span></h1>
-            </div>
-            
-            <nav class="nav-menu">
-                <a href="#" class="nav-item active" data-view="home">
-                    <i class="fas fa-home"></i>
-                    <span>होम</span>
-                </a>
-                <a href="#" class="nav-item" data-view="library">
-                    <i class="fas fa-library"></i>
-                    <span>लाइब्रेरी</span>
-                </a>
-                <a href="#" class="nav-item" data-view="playlists">
-                    <i class="fas fa-list"></i>
-                    <span>प्लेलिस्ट</span>
-                </a>
-                <a href="#" class="nav-item" data-view="favorites">
-                    <i class="fas fa-heart"></i>
-                    <span>पसंदीदा</span>
-                </a>
-            </nav>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+        <meta name="description" content="Pulse Music - Premium music streaming experience with favorites, playlists, offline support, and a responsive player." />
+        <meta name="keywords" content="music, player, pulse, playlist, offline, pwa, favorites, streaming, premium" />
+        <meta name="author" content="Pulse Music" />
+        <meta name="theme-color" content="#8b5cf6" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <meta name="apple-mobile-web-app-title" content="Pulse" />
+        <meta name="mobile-web-app-capable" content="yes" />
+        <meta name="msapplication-TileColor" content="#8b5cf6" />
+        <meta name="msapplication-config" content="browserconfig.xml" />
+    
+        <!-- Open Graph -->
+        <meta property="og:title" content="Pulse Music - Premium Music Experience" />
+        <meta property="og:description" content="Stream your favorite music with Pulse. Premium features, offline support, and beautiful UI." />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="assets/icons/icon-512.svg" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+        <meta property="og:url" content="https://pulse-music.app" />
+    
+        <!-- Twitter Cards -->
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Pulse Music - Premium Music Experience" />
+        <meta name="twitter:description" content="Stream your favorite music with Pulse. Premium features, offline support, and beautiful UI." />
+        <meta name="twitter:image" content="assets/icons/icon-512.svg" />
+    
+        <!-- Structured Data -->
+        <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "WebApplication",
+            "name": "Pulse Music",
+            "description": "Premium music streaming experience",
+            "applicationCategory": "MusicApplication",
+            "operatingSystem": "Any",
+            "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "USD"
+            }
+        }
+        </script>
+    
+        <link rel="manifest" href="manifest.json" />
+        <link rel="icon" type="image/svg+xml" href="assets/icons/icon-192.svg" />
+        <link rel="apple-touch-icon" href="assets/icons/icon-192.svg" />
+        <link rel="canonical" href="https://pulse-music.app" />
+    
+        <title>Pulse Music - Premium Music Experience</title>
+    
+        <link rel="stylesheet" href="src/css/reset.css" />
+        <link rel="stylesheet" href="src/css/variables.css" />
+        <link rel="stylesheet" href="src/css/layout.css" />
+        <link rel="stylesheet" href="src/css/components.css" />
+        <link rel="stylesheet" href="src/css/pages.css" />
+        <link rel="stylesheet" href="src/css/player.css" />
+        <link rel="stylesheet" href="src/css/advanced.css" />
+        <link rel="stylesheet" href="src/css/local-library.css" />
+        <link rel="stylesheet" href="src/css/responsive.css" />
+        <!-- Local overrides -->
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <a class="skip-link" href="#pageContent">Skip to main content</a>
 
-            <div class="sidebar-footer">
-                <button class="upload-btn" id="uploadBtn">
-                    <i class="fas fa-upload"></i>
-                    <span>संगीत अपलोड करें</span>
-                </button>
-                <input type="file" id="fileInput" accept="audio/*" multiple hidden>
-            </div>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            <!-- Header -->
-            <header class="header">
-                <button class="menu-toggle" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="search-bar">
-                    <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="गाने, कलाकार, एल्बम खोजें...">
+        <div class="app shell" id="app">
+            <aside class="sidebar" id="sidebar" aria-label="Primary navigation">
+                <div class="brand">
+                    <div class="brand-mark" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" width="28" height="28" fill="none">
+                            <path d="M9 6 L17 12 L9 18 Z" fill="#fff" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1>Pulse</h1>
+                        <p>Music</p>
+                    </div>
                 </div>
-                <div class="header-actions">
-                    <button class="icon-btn" id="themeToggle" title="थीम बदलें">
-                        <i class="fas fa-moon"></i>
+        
+                <nav class="nav-menu" id="navMenu" aria-label="Main navigation">
+                    <button class="nav-link active" data-page="home" data-icon="🏠">
+                        <span>Home</span>
                     </button>
-                    <div class="user-avatar">
-                        <i class="fas fa-user"></i>
-                    </div>
+                    <button class="nav-link" data-page="search" data-icon="🔍">
+                        <span>Search</span>
+                    </button>
+                    <button class="nav-link" data-page="favorites" data-icon="❤️">
+                        <span>Favorites</span>
+                    </button>
+                    <button class="nav-link" data-page="recently-played" data-icon="🕐">
+                        <span>Recently Played</span>
+                    </button>
+                    <button class="nav-link" data-page="continue-listening" data-icon="▶️">
+                        <span>Continue Listening</span>
+                    </button>
+                    <button class="nav-link" data-page="playlists" data-icon="📋">
+                        <span>Playlists</span>
+                    </button>
+                    <button class="nav-link" data-page="history" data-icon="📊">
+                        <span>History</span>
+                    </button>
+                    <button class="nav-link" data-page="library" data-icon="📚">
+                        <span>Library</span>
+                    </button>
+                    <button class="nav-link" data-page="local-library" data-icon="🎵">
+                        <span>Local Library</span>
+                    </button>
+                    <button class="nav-link" data-page="about" data-icon="ℹ️">
+                        <span>About</span>
+                    </button>
+                </nav>
+        
+                <div class="sidebar-footer">
+                    <p>Enjoy the beat. No install required.</p>
+                    <p class="online-status" id="onlineStatus">Online</p>
                 </div>
-            </header>
+            </aside>
 
-            <!-- Views -->
-            <div class="views-container">
-                <!-- Home View -->
-                <section class="view active" id="homeView">
-                    <div class="hero-section">
-                        <h2>आपका संगीत, <span>आपकी दुनिया</span></h2>
-                        <p>अपने पसंदीदा गाने सुनें, नए गाने खोजें</p>
-                    </div>
-                    
-                    <div class="section-header">
-                        <h3>🔥 ट्रेंडिंग गाने</h3>
-                        <button class="view-all-btn">सभी देखें <i class="fas fa-arrow-right"></i></button>
-                    </div>
-                    <div class="song-grid" id="trendingGrid"></div>
+            <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
-                    <div class="section-header">
-                        <h3>🎵 हाल ही में सुने गए</h3>
+            <main class="main-content">
+                <header class="topbar">
+                    <button class="menu-toggle" id="menuToggle" aria-label="Open navigation" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <div class="topbar-title">
+                        <h2 id="pageTitle">Pulse Music</h2>
+                        <p>Premium music experience</p>
                     </div>
-                    <div class="song-grid" id="recentGrid"></div>
-                </section>
-
-                <!-- Library View -->
-                <section class="view" id="libraryView">
-                    <div class="section-header">
-                        <h3>📚 आपकी लाइब्रेरी</h3>
-                        <span class="song-count" id="libraryCount">0 गाने</span>
-                    </div>
-                    <div class="library-list" id="libraryList"></div>
-                </section>
-
-                <!-- Playlists View -->
-                <section class="view" id="playlistsView">
-                    <div class="section-header">
-                        <h3>📋 प्लेलिस्ट</h3>
-                        <button class="create-playlist-btn" id="createPlaylistBtn">
-                            <i class="fas fa-plus"></i> नई प्लेलिस्ट
+                    <div class="topbar-actions">
+                        <button class="theme-toggle" id="themeToggle" aria-label="Toggle light or dark theme">
+                            <span class="theme-label" id="themeLabel">Dark</span>
                         </button>
                     </div>
-                    <div class="playlists-grid" id="playlistsGrid"></div>
-                </section>
+                </header>
 
-                <!-- Favorites View -->
-                <section class="view" id="favoritesView">
-                    <div class="section-header">
-                        <h3>❤️ पसंदीदा गाने</h3>
-                        <span class="song-count" id="favoritesCount">0 गाने</span>
+                <section class="page-content" id="pageContent" tabindex="-1"></section>
+            </main>
+        </div>
+
+        <nav class="mobile-nav" id="mobileNav" aria-label="Mobile navigation">
+            <button class="mobile-link active" data-page="home" data-icon="🏠">Home</button>
+            <button class="mobile-link" data-page="search" data-icon="🔍">Search</button>
+            <button class="mobile-link" data-page="favorites" data-icon="❤️">Favs</button>
+            <button class="mobile-link" data-page="playlists" data-icon="📋">Lists</button>
+            <button class="mobile-link" data-page="history" data-icon="📊">History</button>
+            <button class="mobile-link" data-page="library" data-icon="📚">Library</button>
+            <button class="mobile-link" data-page="local-library" data-icon="🎵">Local</button>
+        </nav>
+
+        <div class="player-bar" id="playerBar">
+            <div class="player-header">
+                <div class="player-track-info">
+                    <img class="track-cover" id="trackCover" src="assets/images/cover-01.svg" alt="Track cover" />
+                    <div class="player-track-meta">
+                        <p class="track-title" id="trackTitle">Select a song</p>
+                        <p class="track-artist" id="trackArtist">Pulse Music Player</p>
                     </div>
-                    <div class="library-list" id="favoritesList"></div>
+                    <button class="player-btn secondary mini-toggle" id="miniToggle" aria-label="Toggle mini player">Mini</button>
+                </div>
+                <div class="player-controls">
+                    <button class="player-btn" id="prevButton" aria-label="Previous track">⏮</button>
+                    <button class="player-btn play-pause" id="playPauseButton" aria-label="Play or pause">▶</button>
+                    <button class="player-btn" id="nextButton" aria-label="Next track">⏭</button>
+                </div>
+                <div class="player-actions">
+                    <button class="player-btn toggle-btn" id="shuffleButton" aria-pressed="false" aria-label="Shuffle">🔀</button>
+                    <button class="player-btn toggle-btn" id="repeatButton" aria-pressed="false" data-repeat="off" aria-label="Repeat">🔁</button>
+                    <button class="player-btn toggle-btn" id="autoplayButton" aria-pressed="true" aria-label="Autoplay">Auto</button>
+                    <button class="player-btn toggle-btn" id="lyricsToggleButton" aria-pressed="false" aria-label="Lyrics">🎤</button>
+                    <button class="player-btn toggle-btn" id="queueToggleButton" aria-pressed="false" aria-label="Queue">📋</button>
+                    <button class="player-btn toggle-btn" id="sleepTimerButton" aria-label="Sleep timer">⏰</button>
+                    <button class="player-btn toggle-btn" id="fullscreenButton" aria-label="Full screen">⛶</button>
+                </div>
+            </div>
+            <div class="player-progress">
+                <div class="progress-bar-row">
+                    <span id="currentTime">0:00</span>
+                    <input type="range" min="0" max="100" value="0" id="progressRange" aria-label="Playback progress" />
+                    <span id="durationTime">0:00</span>
+                </div>
+                <div class="player-volume-row">
+                    <button class="player-btn toggle-btn" id="muteButton" aria-pressed="false" aria-label="Mute">🔊</button>
+                    <input type="range" min="0" max="1" step="0.01" value="0.8" id="volumeRange" aria-label="Volume control" />
+                    <label for="speedSelect">Speed</label>
+                    <select id="speedSelect" aria-label="Playback speed">
+                        <option value="0.5">0.5x</option>
+                        <option value="0.75">0.75x</option>
+                        <option value="1" selected>1x</option>
+                        <option value="1.25">1.25x</option>
+                        <option value="1.5">1.5x</option>
+                        <option value="2">2x</option>
+                    </select>
+                </div>
+            </div>
+            <div class="player-panel" id="playerPanel">
+                <section class="visualizer" id="visualizer" aria-hidden="true">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </section>
+                <section class="lyrics-panel" id="lyricsPanel">
+                    <h4>Lyrics</h4>
+                    <div class="lyrics-content" id="lyricsContent">Select a track to view lyrics.</div>
+                </section>
+                <section class="queue-panel" id="queuePanel">
+                    <div class="queue-header">
+                        <h4>Up next</h4>
+                        <button class="player-btn secondary" id="queueResetButton">Reset order</button>
+                    </div>
+                    <div class="queue-list" id="queueList"></div>
                 </section>
             </div>
-        </main>
-
-        <!-- Now Playing Bar -->
-        <div class="now-playing-bar" id="nowPlayingBar">
-            <div class="song-info">
-                <div class="song-thumbnail" id="currentThumbnail">
-                    <i class="fas fa-music"></i>
-                </div>
-                <div class="song-details">
-                    <h4 id="currentTitle">कोई गाना नहीं चुना गया</h4>
-                    <p id="currentArtist">गाना चुनें और सुनना शुरू करें</p>
-                </div>
-                <button class="fav-btn" id="favBtn" title="पसंदीदा में जोड़ें">
-                    <i class="far fa-heart"></i>
-                </button>
-            </div>
-
-            <div class="player-controls">
-                <div class="controls-top">
-                    <button class="control-btn" id="shuffleBtn" title="शफल">
-                        <i class="fas fa-random"></i>
-                    </button>
-                    <button class="control-btn" id="prevBtn" title="पिछला">
-                        <i class="fas fa-backward"></i>
-                    </button>
-                    <button class="play-btn" id="playBtn" title="चलाएं">
-                        <i class="fas fa-play"></i>
-                    </button>
-                    <button class="control-btn" id="nextBtn" title="अगला">
-                        <i class="fas fa-forward"></i>
-                    </button>
-                    <button class="control-btn" id="repeatBtn" title="दोहराएं">
-                        <i class="fas fa-repeat"></i>
-                    </button>
-                </div>
-                <div class="progress-container">
-                    <span class="time" id="currentTime">0:00</span>
-                    <input type="range" class="progress-bar" id="progressBar" min="0" max="100" value="0">
-                    <span class="time" id="duration">0:00</span>
-                </div>
-            </div>
-
-            <div class="volume-control">
-                <button class="control-btn" id="volumeBtn" title="वॉल्यूम">
-                    <i class="fas fa-volume-up"></i>
-                </button>
-                <input type="range" class="volume-bar" id="volumeBar" min="0" max="100" value="70">
-            </div>
         </div>
-    </div>
 
-    <!-- Playlist Modal -->
-    <div class="modal" id="playlistModal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>नई प्लेलिस्ट बनाएं</h3>
-                <button class="close-btn" id="closeModalBtn">&times;</button>
+        <div class="floating-mini-player" id="floatingMiniPlayer">
+            <img src="assets/images/cover-01.svg" alt="Now playing" id="floatingCover" />
+            <div class="track-info">
+                <div class="track-title" id="floatingTitle">Select a song</div>
+                <div class="track-artist" id="floatingArtist">Pulse Music</div>
             </div>
-            <div class="modal-body">
-                <input type="text" id="playlistNameInput" placeholder="प्लेलिस्ट का नाम">
-                <div class="playlist-songs" id="playlistSongsList"></div>
-            </div>
-            <div class="modal-footer">
-                <button class="btn-primary" id="savePlaylistBtn">सहेजें</button>
-            </div>
+            <button class="play-btn" id="floatingPlayBtn" aria-label="Play">▶</button>
         </div>
-    </div>
 
-    <!-- Toast Notification -->
-    <div class="toast" id="toast"></div>
+        <div class="error-toast" id="errorToast" role="alert" aria-live="assertive"></div>
 
-    <script src="js/player.js"></script>
-    <script src="js/playlist.js"></script>
-    <script src="js/app.js"></script>
-</body>
+        <script type="module" src="src/js/main.js"></script>
+    </body>
 </html>
